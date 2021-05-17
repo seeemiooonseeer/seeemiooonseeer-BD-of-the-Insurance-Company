@@ -1,0 +1,46 @@
+﻿@page
+@model BD_of_the_Insurance_Company.Pages.Risks_.DeleteModel
+
+@{
+    ViewData["Title"] = "Удалить данные о риске";
+}
+
+<h1>удалить</h1>
+
+<h3>Вы уверены, что хотите удалить данные этого риска?</h3>
+<div>
+    <h4>Риск</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Risks.Risks_ID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Risks.Risks_ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Risks.Risks_name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Risks.Risks_name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Risks.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Risks.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Risks.Average_Probability)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Risks.Average_Probability)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Risks.ID" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-page="./Index">Вернуться назад</a>
+    </form>
+</div>

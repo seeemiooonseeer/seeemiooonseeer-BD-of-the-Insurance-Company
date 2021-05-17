@@ -1,0 +1,48 @@
+﻿@page
+@model BD_of_the_Insurance_Company.Pages.Groups_.IndexModel
+
+@{
+    ViewData["Title"] = "Группы клиентов";
+}
+
+<h1>Список групп клиентов</h1>
+
+<p>
+    <a asp-page="Create">Добавить новую группу</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Groups[0].Groups_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Groups[0].Groups_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Groups[0].Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Groups) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Groups_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Groups_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Внести изменения</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Подробная информация</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

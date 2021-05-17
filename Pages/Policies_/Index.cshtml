@@ -1,0 +1,120 @@
+﻿@page
+@model BD_of_the_Insurance_Company.Pages.Policies_.IndexModel
+
+@{
+    ViewData["Title"] = "Полисы";
+}
+
+<h1>Список полисов</h1>
+
+<p>
+    <a asp-page="Create">Добавить новый полис</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Policies[0].Policies_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policies[0].Start_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policies[0].End_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policies[0].Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policies[0].Payment_amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policies[0].Policy_type_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policies[0].Payment_mark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policies[0].End_mark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policies[0].Clients_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policies[0].Staff_ID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Policies) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Policies_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Start_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.End_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Payment_amount)
+            </td>
+            <td>
+                @{
+                    try
+                    {
+                        @Model.Policy_type.First(r => r.ID == item.Policy_typeID).Policy_type_name
+                    }
+                    catch
+                    {
+                        <p> данных нет </p>
+                    }
+                }
+               
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Payment_mark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.End_mark)
+            </td>
+            <td>
+                @{
+                    try
+                    {
+                        @Model.Client.First(r => r.ID == item.ClientsID).Full_name
+                    }
+                    catch
+                    {
+                        <p> данных нет </p>
+                    }
+                }
+               
+            </td>
+            <td>
+                @{
+                    try
+                    {
+                        @Model.Staff.First(r => r.ID == item.StaffID).Full_name
+                    }
+                    catch
+                    {
+                        <p> данных нет </p>
+                    }
+                }
+               
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Внести изменения</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Подробная информция</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

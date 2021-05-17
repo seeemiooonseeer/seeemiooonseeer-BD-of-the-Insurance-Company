@@ -1,0 +1,60 @@
+﻿@page
+@model BD_of_the_Insurance_Company.Pages.Position_.IndexModel
+
+@{
+    ViewData["Title"] = "Должности";
+}
+
+<h1>Список должностей</h1>
+
+<p>
+    <a asp-page="Create">Добавить новую должность</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Position[0].Position_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position[0].Position_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position[0].Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position[0].Responsibilities)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position[0].Requirements)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Position) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Responsibilities)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Requirements)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Внести изменения</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Подробная информация</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

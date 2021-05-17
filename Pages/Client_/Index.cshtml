@@ -1,0 +1,87 @@
+﻿@page
+@model BD_of_the_Insurance_Company.Pages.Client_.IndexModel
+
+@{
+    ViewData["Title"] = "Клиенты";
+}
+
+<h1>Список клиентов</h1>
+
+<p>
+    <a asp-page="Create">Добавить нового клиента</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Client_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Full_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Adress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Passport_data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client[0].Groups_ID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Client) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Full_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Passport_data)
+            </td>
+            <td>
+                @{
+                    try
+                    {
+                        @Model.Groups.First(r => r.ID == item.GroupsID).Groups_name
+                    }
+                    catch
+                    {
+                        <p> данных нет </p>
+                    }
+                }
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Внести изменения</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Подробная информация</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,45 @@
+﻿@page
+@model BD_of_the_Insurance_Company.Pages.Groups_.EditModel
+
+@{
+    ViewData["Title"] = "Изменить данные о группе клиентов";
+}
+
+<h1>Внести изменения</h1>
+
+<h4>Группа клиентов</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Groups.ID" />
+            <div class="form-group">
+                <label asp-for="Groups.Groups_ID" class="control-label"></label>
+                <input asp-for="Groups.Groups_ID" class="form-control" />
+                <span asp-validation-for="Groups.Groups_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Groups.Groups_name" class="control-label"></label>
+                <input asp-for="Groups.Groups_name" class="form-control" />
+                <span asp-validation-for="Groups.Groups_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Groups.Description" class="control-label"></label>
+                <input asp-for="Groups.Description" class="form-control" />
+                <span asp-validation-for="Groups.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Вернуться назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

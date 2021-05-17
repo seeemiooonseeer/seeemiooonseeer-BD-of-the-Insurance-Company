@@ -1,0 +1,69 @@
+﻿@page
+@model BD_of_the_Insurance_Company.Pages.Stuffs.CreateModel
+
+@{
+    ViewData["Title"] = "Добавить нового сотрудника";
+}
+
+<h1>Добавить</h1>
+
+<h4>Сотрудник</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Staff.Staff_ID" class="control-label"></label>
+                <input asp-for="Staff.Staff_ID" class="form-control" />
+                <span asp-validation-for="Staff.Staff_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staff.Full_name" class="control-label"></label>
+                <input asp-for="Staff.Full_name" class="form-control" />
+                <span asp-validation-for="Staff.Full_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staff.Age" class="control-label"></label>
+                <input asp-for="Staff.Age" class="form-control" />
+                <span asp-validation-for="Staff.Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staff.Gender" class="control-label"></label>
+                <input asp-for="Staff.Gender" class="form-control" />
+                <span asp-validation-for="Staff.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staff.Adress" class="control-label"></label>
+                <input asp-for="Staff.Adress" class="form-control" />
+                <span asp-validation-for="Staff.Adress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staff.Phone" class="control-label"></label>
+                <input asp-for="Staff.Phone" class="form-control" />
+                <span asp-validation-for="Staff.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staff.Passport_data" class="control-label"></label>
+                <input asp-for="Staff.Passport_data" class="form-control" />
+                <span asp-validation-for="Staff.Passport_data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staff.PositionID" class="control-label"></label>
+                <input asp-for="Staff.PositionID" class="form-control" />
+                <span asp-validation-for="Staff.PositionID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Вернуться назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,102 @@
+﻿@page
+@model BD_of_the_Insurance_Company.Pages.Policy_type_.IndexModel
+
+@{
+    ViewData["Title"] = "Виды полисов";
+}
+
+<h1>Список видов полисов</h1>
+
+<p>
+    <a asp-page="Create">Добавить новый вид полиса</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Policy_type[0].Policy_type_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policy_type[0].Policy_type_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policy_type[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policy_type[0].Conditions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policy_type[0].Risks_ID1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policy_type[0].Risks_ID2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policy_type[0].Risks_ID3)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Policy_type) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Policy_type_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Policy_type_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Conditions)
+            </td>
+            <th>
+                @{
+                    try
+                    {
+                        @Model.Risks.First(r => r.ID == item.RisksID1).Risks_name
+                    }
+                    catch
+                    {
+                        <p> данных нет </p>
+                    }
+                }
+               
+            </th>
+            <th>
+                @{
+                    try
+                    {
+                        @Model.Risks.First(r => r.ID == item.RisksID2).Risks_name
+                    }
+                    catch
+                    {
+                        <p> данных нет </p>
+                    }
+                }
+               
+            </th>
+            <th>
+                @{
+                    try
+                    {
+                        @Model.Risks.First(r => r.ID == item.RisksID3).Risks_name
+                    }
+                    catch
+                    {
+                        <p> данных нет </p>
+                    }
+                }
+               
+            </th>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Внести изменения</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Подробная информация</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
