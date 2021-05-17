@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql.local",
+      "connectionId": "BD_of_the_Insurance_CompanyContext"
+    }
+  }
+}
